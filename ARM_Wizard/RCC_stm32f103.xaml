@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="ARM_Wizard.RCC_stm32f103"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ARM_Wizard"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <ToggleSwitch x:Name="ExMode" Header="Expert Mode" Margin="10,0,0,0" VerticalAlignment="Top" IsOn="True"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Frame x:Name="rcc_frame">
+            </Frame>
+        </Grid>
+    </Grid>            
+</Page>

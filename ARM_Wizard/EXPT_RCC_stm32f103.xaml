@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="ARM_Wizard.EXPT_RCC_stm32f103"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ARM_Wizard"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <StackPanel x:Name="input_freqs" Orientation="Vertical" BorderBrush="LightSkyBlue" BorderThickness="2" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0">
+                    <TextBlock Text="Input Frequencies :" FontFamily="Segoe UI"/>
+                    <TextBox Header="Int Clock(HSI):" Text="8MHz" IsEnabled="False" Width="150" HorizontalAlignment="Left" Margin="2,0,2,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
+                    <TextBox Header="Ext Clock(HSE):" Text="16MHz" IsEnabled="True" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
+                    <TextBox Header="Int Low Speed(LSI):" Text="16MHz" IsEnabled="False" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center"  BorderBrush="LightSkyBlue"/>
+                    <TextBox Header="Ext Low Speed(LSE):" Text="16MHz" IsEnabled="True" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <StackPanel x:Name="PLL_multipliers" Orientation="Vertical" BorderBrush="LightSkyBlue" BorderThickness="2" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0">
+                    <TextBlock Text="PLL multipliers :" FontFamily="Segoe UI"/>
+                    <TextBlock Text="PLL Source :" FontFamily="Segoe UI" FontSize="14" />
+                    <StackPanel x:Name="rdbtn" Orientation="Horizontal" HorizontalAlignment="Left" BorderBrush="LightBlue" BorderThickness="1" Width="200">
+                        <RadioButton Content="HSI" Tag="KLS" Checked="RadioButton_Checked" IsChecked="True"/>
+                        <RadioButton Content="HSE" Tag="DKLS" Checked="RadioButton_Checked"/>
+                    </StackPanel>
+                    <ComboBox x:Name="hse_div_pll_input" SelectedIndex="0" Width="150">
+                        <x:String>/1</x:String>
+                        <x:String>/2</x:String>
+                    </ComboBox>
+                    <TextBox Header="Int Clock(HSI):" Text="8MHz" IsEnabled="False" Width="150" HorizontalAlignment="Left" Margin="2,0,2,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
+                    <TextBox Header="Ext Clock(HSE):" Text="16MHz" IsEnabled="True" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
+                    <TextBox Header="Int Low Speed(LSI):" Text="16MHz" IsEnabled="False" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center"  BorderBrush="LightSkyBlue"/>
+                    <TextBox Header="Ext Low Speed(LSE):" Text="16MHz" IsEnabled="True" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Page>
