@@ -139,6 +139,7 @@
     <Compile Include="RCC_stm32f103.xaml.cs">
       <DependentUpon>RCC_stm32f103.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Registers_stm32f103.cs" />
     <Compile Include="shared_var.cs" />
   </ItemGroup>
   <ItemGroup>
