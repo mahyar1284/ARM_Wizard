@@ -26,4 +26,33 @@
         PLLON = 0,
         PLLRDY = 0
     }
+
+    public enum RCC_CFGR : byte
+    {
+        SW = 0,
+        SWS = 2,
+        HPRE = 4,
+        PPRE1 = 8,
+        PPRE2 = 11,
+        ADCPRE = 14,
+        PLLSRC = 16,
+        PLLXTPRE = 17,
+        PLLMUL = 18,
+        USBPRE = 22,
+        MCO = 24,
+    }
+    public enum RCC_CFGR_Val : byte
+    {
+        SW = 0,
+        SWS = 0,
+        HPRE = 0,
+        PPRE1 = 0,
+        PPRE2 = 0,
+        ADCPRE = 0,
+        PLLSRC = 0,
+        PLLXTPRE = 0,
+        PLLMUL = 0,
+        USBPRE = 0,
+        MCO = 0
+    }
 }

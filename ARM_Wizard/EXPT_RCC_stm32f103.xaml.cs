@@ -2,7 +2,6 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ARM_Wizard
@@ -48,6 +47,15 @@ namespace ARM_Wizard
         private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void RelativePanel_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (((Frame)Window.Current.Content).ActualWidth > 800)
+            {
+                
+            }
+                //VisualStateManager.GoToState();
         }
     }
 }

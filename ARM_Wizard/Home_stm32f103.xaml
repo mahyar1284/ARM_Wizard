@@ -9,6 +9,21 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <!-- VisualState to be triggered when the
+                             window width is >=720 effective pixels. -->
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="stm32f103c8splitview.DisplayMode" Value="CompactOverlay"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <SplitView x:Name="stm32f103c8splitview" DisplayMode="CompactOverlay" Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <SplitView.Pane>
                 <ListBox x:Name="nav_list" SelectionMode="Single" SelectionChanged="Nav_list_SelectionChanged" HorizontalAlignment="Left">

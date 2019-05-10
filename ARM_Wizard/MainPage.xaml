@@ -78,8 +78,8 @@
             </RelativePanel>
         </Grid>
 
-        <Grid Grid.Row="1">
-            <Frame Name="mainframe" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid Grid.Row="1" HorizontalAlignment="Stretch" Margin="0,0,0,0">
+            <Frame Name="mainframe" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,0">
             </Frame>
         </Grid>
         <Grid Grid.Row="2" Background="LightSkyBlue">

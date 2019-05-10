@@ -9,11 +9,30 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                
+                <VisualState>
+
+                    <VisualState.StateTriggers>
+                        <!-- VisualState to be triggered when the
+                             window width is >=720 effective pixels. -->
+                        <AdaptiveTrigger MinWindowWidth="1000" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="mycode.(RelativePanel.RightOf)" Value="SysClkInput"/>
+                        <Setter Target="mycode.(RelativePanel.Below)" Value=""/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <RelativePanel>
+
             <StackPanel x:Name="input_freqs" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10,0,0,0">
                 <TextBlock Text="MCU Input Frequencies :" FontFamily="Segoe UI"/>
                 <TextBox Header="Int Clock(HSI):" Text="8MHz" IsReadOnly="True" Width="150" HorizontalAlignment="Left" Margin="2,0,2,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
-                <TextBox Header="Ext Clock(HSE):" Text="16MHz" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
+                <TextBox Header="Ext Clock(HSE):" Text="16" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
                 <TextBox Header="Int Low Speed(LSI):" Text="16MHz" IsReadOnly="True" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center"  BorderBrush="LightSkyBlue"/>
                 <TextBox Header="Ext Low Speed(LSE):" Text="16MHz" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
             </StackPanel>
@@ -69,9 +88,15 @@
                     <x:String>/8</x:String>
                     <x:String>/16</x:String>
                 </ComboBox>
-
-
+                <ComboBox Header="ADC  Prescaler:" SelectedIndex="0" FontFamily="Segoe UI" BorderBrush="LightSkyBlue">
+                    <x:String>/2</x:String>
+                    <x:String>/4</x:String>
+                    <x:String>/6</x:String>
+                    <x:String>/8</x:String>
+                </ComboBox>
             </StackPanel>
+            <TextBox x:Name="mycode" IsReadOnly="True" PlaceholderText="Tap To Generate Code" RelativePanel.Below="input_freqs" Header="Generated Code:" Width="300" Height="200" Margin="10,10,0,0" BorderBrush="#FF00B9FF" Background="White"/>
+            <Button Content="Generate" RelativePanel.Below="mycode" RelativePanel.AlignHorizontalCenterWith="mycode" Margin="10,0,0,0" Width="300" BorderBrush="#FF00B9FF" Background="#FF00B9FF"/>
         </RelativePanel>
     </Grid>
 </Page>
