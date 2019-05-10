@@ -9,72 +9,69 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Grid>
-            <RelativePanel>
-                <StackPanel x:Name="input_freqs" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10,0,0,0">
-                    <TextBlock Text="MCU Input Frequencies :" FontFamily="Segoe UI"/>
-                    <TextBox Header="Int Clock(HSI):" Text="8MHz" IsReadOnly="True" Width="150" HorizontalAlignment="Left" Margin="2,0,2,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
-                    <TextBox Header="Ext Clock(HSE):" Text="16MHz" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
-                    <TextBox Header="Int Low Speed(LSI):" Text="16MHz" IsReadOnly="True" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center"  BorderBrush="LightSkyBlue"/>
-                    <TextBox Header="Ext Low Speed(LSE):" Text="16MHz" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
-                </StackPanel>
-                
-                <StackPanel x:Name="PLL_facts" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="60,0,0,0" RelativePanel.RightOf="input_freqs">
-                    <TextBlock Text="MCU PLL Factures :" FontFamily="Segoe UI"/>
-                    <TextBlock Text="PLL Source :" FontFamily="Segoe UI"  />
-                    <StackPanel x:Name="rdbtn" Orientation="Horizontal" HorizontalAlignment="Left" BorderBrush="LightBlue" BorderThickness="1">
-                        <RadioButton Content="HSI" Tag="KLS" IsChecked="True"/>
-                        <RadioButton Content="HSE" Tag="DKLS"/>
-                    </StackPanel>
-                    <ComboBox x:Name="hse_div_pll_input" Header="HSE PreDiv Value:" SelectedIndex="0" Width="150" Margin="0,5,0,0" BorderBrush="LightSkyBlue">
-                        <x:String>/1</x:String>
-                        <x:String>/2</x:String>
-                    </ComboBox>
-                    <ComboBox x:Name="hsi_div_pll_input" Header="HSI PreDiv Value:" SelectedIndex="0" Width="150" Margin="0,5,0,0" BorderBrush="LightSkyBlue">
-                        <x:String>/2</x:String>
-                    </ComboBox>
-                    <TextBox Header="PLL Multiplier:"  PlaceholderText="From 2 To 16" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
-                </StackPanel>
-                
-                <StackPanel x:Name="SysClkInput" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20,0,0,0" RelativePanel.RightOf="PLL_facts">
-                    <TextBlock Text="Clk Src and AHB/APB prescalers:" FontFamily="Segoe UI"/>
-                    <TextBlock Text="Main Clock Source :" FontFamily="Segoe UI"  />
-                    <StackPanel x:Name="sysinputclkrdbtn" Orientation="Vertical" HorizontalAlignment="Left" BorderBrush="LightBlue" BorderThickness="2">
-                        <RadioButton Content="HSI" Tag="HSI" IsChecked="True"/>
-                        <RadioButton Content="HSE" Tag="HSE"/>
-                        <RadioButton Content="PLL" Tag="PLL"/>
-                    </StackPanel>
-                    <ComboBox Header="AHB/Core  Pre:" SelectedIndex="0" FontFamily="Segoe UI" BorderBrush="LightSkyBlue">
-                        <x:String>/1</x:String>
-                        <x:String>/2</x:String>
-                        <x:String>/4</x:String>
-                        <x:String>/8</x:String>
-                        <x:String>/16</x:String>
-                        <x:String>/32</x:String>
-                        <x:String>/64</x:String>
-                        <x:String>/128</x:String>
-                        <x:String>/256</x:String>
-                        <x:String>/512</x:String>
-                    </ComboBox>
-                    <ComboBox Header="APB1 Prescaler:" SelectedIndex="0" FontFamily="Segoe UI" BorderBrush="LightSkyBlue">
-                        <x:String>/1</x:String>
-                        <x:String>/2</x:String>
-                        <x:String>/4</x:String>
-                        <x:String>/8</x:String>
-                        <x:String>/16</x:String>
-                    </ComboBox>
-                    <ComboBox Header="APB2 Prescaler:" SelectedIndex="0" FontFamily="Segoe UI" BorderBrush="LightSkyBlue">
-                        <x:String>/1</x:String>
-                        <x:String>/2</x:String>
-                        <x:String>/4</x:String>
-                        <x:String>/8</x:String>
-                        <x:String>/16</x:String>
-                    </ComboBox>
-                    
+        <RelativePanel>
+            <StackPanel x:Name="input_freqs" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10,0,0,0">
+                <TextBlock Text="MCU Input Frequencies :" FontFamily="Segoe UI"/>
+                <TextBox Header="Int Clock(HSI):" Text="8MHz" IsReadOnly="True" Width="150" HorizontalAlignment="Left" Margin="2,0,2,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
+                <TextBox Header="Ext Clock(HSE):" Text="16MHz" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
+                <TextBox Header="Int Low Speed(LSI):" Text="16MHz" IsReadOnly="True" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center"  BorderBrush="LightSkyBlue"/>
+                <TextBox Header="Ext Low Speed(LSE):" Text="16MHz" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
+            </StackPanel>
 
+            <StackPanel x:Name="PLL_facts" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="60,0,0,0" RelativePanel.RightOf="input_freqs">
+                <TextBlock Text="MCU PLL Factures :" FontFamily="Segoe UI"/>
+                <TextBlock Text="PLL Source :" FontFamily="Segoe UI"  />
+                <StackPanel x:Name="rdbtn" Orientation="Vertical" HorizontalAlignment="Left" BorderBrush="LightBlue" BorderThickness="1">
+                    <RadioButton Content="HSI" Tag="KLS" IsChecked="True"/>
+                    <RadioButton Content="HSE" Tag="DKLS"/>
                 </StackPanel>
-            </RelativePanel>
+                <ComboBox x:Name="hse_div_pll_input" Header="HSE PreDiv Value:" SelectedIndex="0" Width="150" Margin="0,5,0,0" BorderBrush="LightSkyBlue">
+                    <x:String>/1</x:String>
+                    <x:String>/2</x:String>
+                </ComboBox>
+                <ComboBox x:Name="hsi_div_pll_input" Header="HSI PreDiv Value:" SelectedIndex="0" Width="150" Margin="0,5,0,0" BorderBrush="LightSkyBlue">
+                    <x:String>/2</x:String>
+                </ComboBox>
+                <TextBox Header="PLL Multiplier:"  PlaceholderText="From 2 To 16" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
+            </StackPanel>
 
-        </Grid>
+            <StackPanel x:Name="SysClkInput" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20,0,0,0" RelativePanel.RightOf="PLL_facts">
+                <TextBlock Text="Clk Src and AHB/APB prescalers:" FontFamily="Segoe UI"/>
+                <TextBlock Text="Main Clock Source :" FontFamily="Segoe UI"  />
+                <StackPanel x:Name="sysinputclkrdbtn" Orientation="Vertical" HorizontalAlignment="Left" BorderBrush="LightBlue" BorderThickness="2">
+                    <RadioButton Content="HSI" Tag="HSI" IsChecked="True"/>
+                    <RadioButton Content="HSE" Tag="HSE"/>
+                    <RadioButton Content="PLL" Tag="PLL"/>
+                </StackPanel>
+                <ComboBox Header="AHB/Core  Pre:" SelectedIndex="0" FontFamily="Segoe UI" BorderBrush="LightSkyBlue">
+                    <x:String>/1</x:String>
+                    <x:String>/2</x:String>
+                    <x:String>/4</x:String>
+                    <x:String>/8</x:String>
+                    <x:String>/16</x:String>
+                    <x:String>/32</x:String>
+                    <x:String>/64</x:String>
+                    <x:String>/128</x:String>
+                    <x:String>/256</x:String>
+                    <x:String>/512</x:String>
+                </ComboBox>
+                <ComboBox Header="APB1 Prescaler:" SelectedIndex="0" FontFamily="Segoe UI" BorderBrush="LightSkyBlue">
+                    <x:String>/1</x:String>
+                    <x:String>/2</x:String>
+                    <x:String>/4</x:String>
+                    <x:String>/8</x:String>
+                    <x:String>/16</x:String>
+                </ComboBox>
+                <ComboBox Header="APB2 Prescaler:" SelectedIndex="0" FontFamily="Segoe UI" BorderBrush="LightSkyBlue">
+                    <x:String>/1</x:String>
+                    <x:String>/2</x:String>
+                    <x:String>/4</x:String>
+                    <x:String>/8</x:String>
+                    <x:String>/16</x:String>
+                </ComboBox>
+
+
+            </StackPanel>
+        </RelativePanel>
     </Grid>
 </Page>
