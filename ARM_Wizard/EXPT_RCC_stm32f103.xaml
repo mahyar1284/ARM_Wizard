@@ -25,6 +25,21 @@
                         <Setter Target="mycode.(RelativePanel.Below)" Value=""/>
                     </VisualState.Setters>
                 </VisualState>
+                <VisualState>
+
+                    <VisualState.StateTriggers>
+                        <!-- VisualState to be triggered when the
+                             window width is >=720 effective pixels. -->
+                        <AdaptiveTrigger MinWindowWidth="1200" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="mycode.Width" Value="500"/>
+                        <Setter Target="gnr_btn.Width" Value="500"/>
+                        <Setter Target="mycode.(RelativePanel.RightOf)" Value="SysClkInput"/>
+                        <Setter Target="mycode.(RelativePanel.Below)" Value=""/>
+                    </VisualState.Setters>
+                </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <RelativePanel>
@@ -96,7 +111,7 @@
                 </ComboBox>
             </StackPanel>
             <TextBox x:Name="mycode" IsReadOnly="True" PlaceholderText="Tap To Generate Code" RelativePanel.Below="input_freqs" Header="Generated Code:" Width="300" Height="200" Margin="10,10,0,0" BorderBrush="#FF00B9FF" Background="White"/>
-            <Button Content="Generate" RelativePanel.Below="mycode" RelativePanel.AlignHorizontalCenterWith="mycode" Margin="10,0,0,0" Width="300" BorderBrush="#FF00B9FF" Background="#FF00B9FF"/>
+            <Button x:Name="gnr_btn" Content="Generate" RelativePanel.Below="mycode" RelativePanel.AlignHorizontalCenterWith="mycode" Margin="10,0,0,0" Width="300" BorderBrush="#FF00B9FF" Background="#FF00B9FF" Click="Gnr_btn_Click"/>
         </RelativePanel>
     </Grid>
 </Page>

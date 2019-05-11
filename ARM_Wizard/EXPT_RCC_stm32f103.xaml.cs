@@ -1,4 +1,4 @@
-﻿using RCC_Register;
+﻿using Stm32f103_Registers.RCC_Register;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -12,22 +12,44 @@ namespace ARM_Wizard
     public sealed partial class EXPT_RCC_stm32f103 : Page
     {
         string outstr;
-        bool pll_input = false;
+        RCC_CFGR rcc_cfgr = new RCC_CFGR();
+        RCC_CFGR_Val rcc_cfgr_val = new RCC_CFGR_Val();
+        RCC_CR rcc_cr = new RCC_CR();
+        RCC_CR_Val rcc_cr_val = new RCC_CR_Val();
+
+        #region Static Strings
+        static readonly string endline = "\r\n";
+        static readonly string HSI_Wait = "while(!" + RCC_CR.HSIRDY.ToString() + ");";
+        static readonly string HSE_Wait = "while(!" + RCC_CR.HSERDY.ToString() + ");";
+        static readonly string PLL_Wait = "while(!" + RCC_CR.PLLRDY.ToString() + ");";
+        static readonly string RCC_Reset = "/* Set HSION bit */" + endline +
+            "RCC->CR |= (1 << 0);" + endline +
+            "/* Reset SW, HPRE, PPRE1, PPRE2, ADCPRE and MCO bits */" + endline +
+            "RCC->CFGR &= (uint32_t)0xF8FF0000;" + endline +
+            "/* Reset HSEON, CSSON and PLLON bits */" + endline +
+            "RCC->CR &= (uint32_t)0xFEF6FFFF;" + endline +
+            "/* Reset HSEBYP bit */" + endline +
+            "RCC->CR &= (uint32_t)0xFFFBFFFF;" + endline +
+            "/* Reset PLLSRC, PLLXTPRE, PLLMUL and USBPRE/OTGFSPRE bits */" + endline +
+            "RCC->CFGR &= (uint32_t)0xFF80FFFF;" + endline +
+            "/* Disable all interrupts and clear pending bits  */" + endline +
+            "RCC->CIR = 0x009F0000;" + endline +
+            "//-------------------------//";
+        #endregion
+
         public EXPT_RCC_stm32f103()
         {
             this.InitializeComponent();
-            outstr = "RCC->CR = " + "(" + RCC_CR_Val.HSEON.ToString() + "<<" + RCC_CR.HSEON.ToString() + ") |" +
-                  "(" + RCC_CR_Val.HSITRIM.ToString() + "<<" + RCC_CR.HSITRIM.ToString() + ") |" +
-                  "(" + RCC_CR_Val.HSICAL.ToString() + "<<" + RCC_CR.HSICAL.ToString() + ") |" +
-                  "(" + RCC_CR_Val.HSEON.ToString() + "<<" + RCC_CR.HSEON.ToString() + ") |" +
-                  "(" + RCC_CR_Val.HSEBYP.ToString() + "<<" + RCC_CR.HSEBYP.ToString() + ") |" +
-                  "(" + RCC_CR_Val.CSSON.ToString() + "<<" + RCC_CR.CSSON.ToString() + ") |" +
-                  "(" + RCC_CR_Val.PLLON.ToString() + "<<" + RCC_CR.PLLON.ToString() + ") |";
+
+
+
+
 
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
+
             //RadioButton rb = sender as RadioButton;
             //if (rb != null)
             //{
@@ -53,9 +75,21 @@ namespace ARM_Wizard
         {
             if (((Frame)Window.Current.Content).ActualWidth > 800)
             {
-                
+
             }
-                //VisualStateManager.GoToState();
+            //VisualStateManager.GoToState();
+        }
+
+        private void Gnr_btn_Click(object sender, RoutedEventArgs e)
+        {
+            outstr = "RCC->CR = " + "(" + rcc_cr_val.HSION.ToString() + "<<" + RCC_CR.HSION.ToString() + ") | " +
+                 "(" + rcc_cr_val.HSITRIM.ToString() + "<<" + RCC_CR.HSITRIM.ToString() + ") | " +
+                 "(" + rcc_cr_val.HSICAL.ToString() + "<<" + RCC_CR.HSICAL.ToString() + ") | " +
+                 "(" + rcc_cr_val.HSEON.ToString() + "<<" + RCC_CR.HSEON.ToString() + ") | " +
+                 "(" + rcc_cr_val.HSEBYP.ToString() + "<<" + RCC_CR.HSEBYP.ToString() + ") | " +
+                 "(" + rcc_cr_val.CSSON.ToString() + "<<" + RCC_CR.CSSON.ToString() + ") | " +
+                 "(" + rcc_cr_val.PLLON.ToString() + "<<" + RCC_CR.PLLON.ToString() + ");\r\n";
+            mycode.Text = outstr;
         }
     }
 }
