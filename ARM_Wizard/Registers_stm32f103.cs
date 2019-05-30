@@ -2,18 +2,18 @@
 {
     namespace RCC_Register
     {
-        public class RCC_CR
+        public enum RCC_CR : byte
         {
-            public const byte HSION = 0;
-            public const byte HSIRDY = 1;
-            public const byte HSITRIM = 3;
-            public const byte HSICAL = 8;
-            public const byte HSEON = 16;
-            public const byte HSERDY = 17;
-            public const byte HSEBYP = 18;
-            public const byte CSSON = 19;
-            public const byte PLLON = 24;
-            public const byte PLLRDY = 25;
+            HSION = 0,
+            HSIRDY = 1,
+            HSITRIM = 3,
+            HSICAL = 8,
+            HSEON = 16,
+            HSERDY = 17,
+            HSEBYP = 18,
+            CSSON = 19,
+            PLLON = 24,
+            PLLRDY = 25
         }
         public class RCC_CR_Val
         {
@@ -29,19 +29,19 @@
             public byte PLLRDY = 0;
         }
 
-        public class RCC_CFGR
+        public enum RCC_CFGR : byte
         {
-            public byte SW = 0;
-            public byte SWS = 2;
-            public byte HPRE = 4;
-            public byte PPRE1 = 8;
-            public byte PPRE2 = 11;
-            public byte ADCPRE = 14;
-            public byte PLLSRC = 16;
-            public byte PLLXTPRE = 17;
-            public byte PLLMUL = 18;
-            public byte USBPRE = 22;
-            public byte MCO = 24;
+            SW = 0,
+            SWS = 2,
+            HPRE = 4,
+            PPRE1 = 8,
+            PPRE2 = 11,
+            ADCPRE = 14,
+            PLLSRC = 16,
+            PLLXTPRE = 17,
+            PLLMUL = 18,
+            USBPRE = 22,
+            MCO = 24
         }
         public class RCC_CFGR_Val
         {

@@ -47,17 +47,16 @@
             <StackPanel x:Name="input_freqs" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10,0,0,0">
                 <TextBlock Text="MCU Input Frequencies :" FontFamily="Segoe UI"/>
                 <TextBox Header="Int Clock(HSI):" Text="8MHz" IsReadOnly="True" Width="150" HorizontalAlignment="Left" Margin="2,0,2,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
-                <TextBox Header="Ext Clock(HSE):" Text="16" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
-                <TextBox Header="Int Low Speed(LSI):" Text="16MHz" IsReadOnly="True" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center"  BorderBrush="LightSkyBlue"/>
-                <TextBox Header="Ext Low Speed(LSE):" Text="16MHz" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
+                <TextBox Header="Ext Clock(HSE):" x:Name="HSEONUI" Text="16" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
+                <TextBox Header="Int Low Speed(LSI):" Text="not available" IsReadOnly="True" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center"  BorderBrush="LightSkyBlue"/>
+                <TextBox Header="Ext Low Speed(LSE):" Text="not available" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
             </StackPanel>
-
-            <StackPanel x:Name="PLL_facts" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="60,0,0,0" RelativePanel.RightOf="input_freqs">
+            <StackPanel x:Name="PLL_facts" Orientation="Vertical" VerticalAlignment="Top" Margin="60,0,0,0" RelativePanel.RightOf="input_freqs">
                 <TextBlock Text="MCU PLL Factures :" FontFamily="Segoe UI"/>
                 <TextBlock Text="PLL Source :" FontFamily="Segoe UI"  />
-                <StackPanel x:Name="rdbtn" Orientation="Vertical" HorizontalAlignment="Left" BorderBrush="LightBlue" BorderThickness="1">
-                    <RadioButton Content="HSI" Tag="KLS" IsChecked="True"/>
-                    <RadioButton Content="HSE" Tag="DKLS"/>
+                <StackPanel x:Name="pllsrcrdbtn" Orientation="Vertical" HorizontalAlignment="Left" BorderBrush="LightBlue" BorderThickness="1">
+                    <RadioButton Content="HSI" Tag="HSI" IsChecked="True" Checked="pllsrcrdbtn_Checked"/>
+                    <RadioButton Content="HSE" Tag="HSE" Checked="pllsrcrdbtn_Checked"/>
                 </StackPanel>
                 <ComboBox x:Name="hse_div_pll_input" Header="HSE PreDiv Value:" SelectedIndex="0" Width="150" Margin="0,5,0,0" BorderBrush="LightSkyBlue">
                     <x:String>/1</x:String>
@@ -66,18 +65,18 @@
                 <ComboBox x:Name="hsi_div_pll_input" Header="HSI PreDiv Value:" SelectedIndex="0" Width="150" Margin="0,5,0,0" BorderBrush="LightSkyBlue">
                     <x:String>/2</x:String>
                 </ComboBox>
-                <TextBox Header="PLL Multiplier:"  PlaceholderText="From 2 To 16" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
+                <TextBox x:Name="PLL_MUL_ONUI" Header="PLL Multiplier:"  PlaceholderText="From 2 To 16" Width="150" HorizontalAlignment="Left" Margin="2,0,0,0" TextAlignment="Center" BorderBrush="LightSkyBlue"/>
             </StackPanel>
 
             <StackPanel x:Name="SysClkInput" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20,0,0,0" RelativePanel.RightOf="PLL_facts">
                 <TextBlock Text="Clk Src and AHB/APB prescalers:" FontFamily="Segoe UI"/>
                 <TextBlock Text="Main Clock Source :" FontFamily="Segoe UI"  />
                 <StackPanel x:Name="sysinputclkrdbtn" Orientation="Vertical" HorizontalAlignment="Left" BorderBrush="LightBlue" BorderThickness="2">
-                    <RadioButton Content="HSI" Tag="HSI" IsChecked="True"/>
-                    <RadioButton Content="HSE" Tag="HSE"/>
-                    <RadioButton Content="PLL" Tag="PLL"/>
+                    <RadioButton Content="HSI" Tag="HSI" IsChecked="True" Checked="sysinputclkrdbtn_Checked"/>
+                    <RadioButton Content="HSE" Tag="HSE" Checked="sysinputclkrdbtn_Checked"/>
+                    <RadioButton Content="PLL" Tag="PLL" Checked="sysinputclkrdbtn_Checked"/>
                 </StackPanel>
-                <ComboBox Header="AHB/Core  Pre:" SelectedIndex="0" FontFamily="Segoe UI" BorderBrush="LightSkyBlue">
+                <ComboBox x:Name="AHBCoreOnUI" Header="AHB/Core  Pre:" SelectedIndex="0" FontFamily="Segoe UI" BorderBrush="LightSkyBlue">
                     <x:String>/1</x:String>
                     <x:String>/2</x:String>
                     <x:String>/4</x:String>
@@ -89,28 +88,33 @@
                     <x:String>/256</x:String>
                     <x:String>/512</x:String>
                 </ComboBox>
-                <ComboBox Header="APB1 Prescaler:" SelectedIndex="0" FontFamily="Segoe UI" BorderBrush="LightSkyBlue">
+                <ComboBox x:Name="APB1OnUI" Header="APB1 Prescaler:" SelectedIndex="0" FontFamily="Segoe UI" BorderBrush="LightSkyBlue">
                     <x:String>/1</x:String>
                     <x:String>/2</x:String>
                     <x:String>/4</x:String>
                     <x:String>/8</x:String>
                     <x:String>/16</x:String>
                 </ComboBox>
-                <ComboBox Header="APB2 Prescaler:" SelectedIndex="0" FontFamily="Segoe UI" BorderBrush="LightSkyBlue">
+                <ComboBox x:Name="APB2OnUI" Header="APB2 Prescaler:" SelectedIndex="0" FontFamily="Segoe UI" BorderBrush="LightSkyBlue">
                     <x:String>/1</x:String>
                     <x:String>/2</x:String>
                     <x:String>/4</x:String>
                     <x:String>/8</x:String>
                     <x:String>/16</x:String>
                 </ComboBox>
-                <ComboBox Header="ADC  Prescaler:" SelectedIndex="0" FontFamily="Segoe UI" BorderBrush="LightSkyBlue">
+                <ComboBox x:Name="ADCPreOnUI" Header="ADC  Prescaler:" SelectedIndex="0" FontFamily="Segoe UI" BorderBrush="LightSkyBlue">
                     <x:String>/2</x:String>
                     <x:String>/4</x:String>
                     <x:String>/6</x:String>
                     <x:String>/8</x:String>
                 </ComboBox>
+                <ComboBox x:Name="FlashLatOnUI" Header="Flash Latency  :" SelectedIndex="0" FontFamily="Segoe UI" BorderBrush="LightSkyBlue">
+                    <x:String>Zero</x:String>
+                    <x:String>One</x:String>
+                    <x:String>/Two</x:String>
+                </ComboBox>
             </StackPanel>
-            <TextBox x:Name="mycode" IsReadOnly="True" PlaceholderText="Tap To Generate Code" RelativePanel.Below="input_freqs" Header="Generated Code:" Width="300" Height="200" Margin="10,10,0,0" BorderBrush="#FF00B9FF" Background="White"/>
+            <TextBox x:Name="mycode" IsReadOnly="True" AcceptsReturn="True" PlaceholderText="Tap To Generate Code" RelativePanel.Below="input_freqs" Header="Generated Code:" Width="300" Height="200" Margin="10,10,0,0" BorderBrush="#FF00B9FF" Background="White"/>
             <Button x:Name="gnr_btn" Content="Generate" RelativePanel.Below="mycode" RelativePanel.AlignHorizontalCenterWith="mycode" Margin="10,0,0,0" Width="300" BorderBrush="#FF00B9FF" Background="#FF00B9FF" Click="Gnr_btn_Click"/>
         </RelativePanel>
     </Grid>

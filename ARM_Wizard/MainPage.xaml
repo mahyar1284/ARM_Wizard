@@ -85,7 +85,7 @@
         <Grid Grid.Row="2" Background="LightSkyBlue">
 
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                <TextBlock Text="2019 Copyrights reserved by mahyar1284" Margin="10,0,0,0"/>
+                <TextBlock Text="Copyrights :   © 2019 Mahyar1284 (Software/Hardware Developer)" Margin="10,0,0,0"/>
             </StackPanel>
         </Grid>
 
